@@ -1,0 +1,10 @@
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\bin\Debug\DatabaseAssistant.exe
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\bin\Debug\DatabaseAssistant.pdb
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\obj\x86\Debug\WindowsFormsApplication1.MainScreen.resources
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\obj\x86\Debug\DatabaseAssistant.csproj.GenerateResource.Cache
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\obj\x86\Debug\DatabaseAssistant.exe
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\obj\x86\Debug\DatabaseAssistant.pdb
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\bin\Debug\DatabaseAssistant.exe.config
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\obj\x86\Debug\WindowsFormsApplication1.LoginForm.resources
+C:\Users\Jonny\documents\visual studio 2010\Projects\DatabaseAssistant\DatabaseAssistant\obj\x86\Debug\DatabaseAssistant.csprojResolveAssemblyReference.cache
