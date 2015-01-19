@@ -14,12 +14,11 @@ namespace WindowsFormsApplication1.Functions
     {
         private SqlConnection SC =  new SqlConnection();
         public int pOrF = 0;
-        private Login L = new Login();
         
-        public void SetLogin(Login T)
+        /*public void SetLogin(Login T)
         {
             this.L = T;
-        }
+        }*/
 
         public List<string> GetDatabases()
         {
