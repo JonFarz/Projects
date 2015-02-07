@@ -33,10 +33,6 @@ namespace WindowsFormsApplication1.Functions
                     DBs[i] = DR.GetString(0);
                     i++;
                 }
-
-                DR.Close();
-                DR.Dispose();
-                SQ.Dispose();
             }
 
             return DBs;
@@ -107,9 +103,6 @@ namespace WindowsFormsApplication1.Functions
                 {
                     Console.WriteLine("{0}", SDR.GetString(0));
                 }
-                SDR.Close();
-                SDR.Dispose();
-                SQ.Dispose();
             }
         }
 
