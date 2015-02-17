@@ -5,7 +5,7 @@
 
 
 data <- read.csv("resources\\house-votes-84.csv")
-summary(data)
+#summary(data)
 
 #ncol(data)
 #nrow(data)
@@ -21,8 +21,8 @@ N_Matrix = matrix(c(data[2]))
 dimnames(N_Matrix) <- list(NULL,"N")
 
 #DemoRepubMatrix
-names(data[2])
-length(data)
+#names(data[2])
+#length(data)
 
 mati=DemoRepubMatrix
 
@@ -36,9 +36,36 @@ for(i in 2:length(data))
 	dimnames(m) <- list(NULL, name) #name the column of the matrix its column name
 	mati <- cbind(mati, m) #append column to new matrix
 }
-#mati <- cbind(DemoRepubMatrix, N_Matrix)
 
-mati
+#instanciate republican and democrate matrixs
+matiRepub <- as.matrix(mati[0,2:ncol(mati)])
+matiDemo <- as.matrix(mati[0,2:ncol(mati)])
+
+#fill matrix with associated data
+for(p in 1:nrow(data))
+{
+	vmatrix = as.matrix(mati[p,2:ncol(mati)])
+	vmatrix = matrix(vmatrix,ncol = 16)
+	vmatrix
+	if(mati[p]=="republican")
+	{	
+		matiRepub <- rbind(matiRepub,vmatrix)	
+	}
+	if(mati[p]=="democrat")
+	{
+		matiDemo <- rbind(matiDemo,vmatrix)
+	}
+}
+
+#mati[1,2:ncol(mati)]
+length(matiRepub)
+
+#mati[,2]
+#mati[,3]
+#t = mati[,"Party"]=="republican"
+#t
+#as.numeric(mati[2,])
+
 #y = c(data[,2])-1
 #y = as.integer(y<2)
 #y
