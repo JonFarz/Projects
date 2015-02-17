@@ -29,7 +29,7 @@ mati=DemoRepubMatrix
 for(i in 2:length(data))
 {
 	name = names(data[i]) #get column name
-	x = c(data[,i])-1 #remove 1 from binary representation
+	x = c(data[,i])-1 #remove 1 for binary representation
 	x = as.integer(x<2) #bring anything inside of the rage 0 and 1 (Yes and No) NOT ?
 	#m = matrix(as.integer(c(data[,i])-1)<2)
 	m = matrix(x) #create a matrix of the data
