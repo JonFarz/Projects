@@ -58,8 +58,8 @@ for(p in 1:nrow(data))
 }
 
 #mati[1,2:ncol(mati)]
-length(matiRepub)
-
+matiRepub
+matiDemo
 #mati[,2]
 #mati[,3]
 #t = mati[,"Party"]=="republican"
