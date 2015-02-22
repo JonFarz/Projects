@@ -106,7 +106,7 @@ nrow(matiDemo) #267
 matiDemoContig <- createContingencyTableFromMatrix(matiDemo)
 matiRepubContig <- createContingencyTableFromMatrix(matiRepub)
 
-matiDemoContig
+#matiDemoContig
 distancefinder(matiDemoContig)
-matiRepubContig
+#matiRepubContig
 distancefinder(matiRepubContig)
