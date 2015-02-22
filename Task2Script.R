@@ -3,18 +3,33 @@
 # Author: Jonathon Farzanfar
 ###############################################################################
 
+#FUNCTIONS
 
-data <- read.csv("resources\\house-votes-84.csv")
-#summary(data)
+convertDataToMatrix <- function(df)
+{
+	nColData <- ncol(df)
+	namesdf <- names(df)
+	dataMatrix <- as.matrix(df,ncol=nColData,dimnames = namesdf)
+	colnames(dataMatrix)[1] <- "Party"
+	dataMatrix[dataMatrix %in% "?"] <- as.numeric(0)
+	dataMatrix[dataMatrix %in% "n"] <- as.numeric(0)
+	dataMatrix[dataMatrix %in% "y"] <- as.numeric(1)
+	return (dataMatrix)
+}
 
-#ncol(data)
-#nrow(data)
-#names(data)
-#attributes(data$republican)
+subsetDataToMatrix <- function(mat, textToLimitBy)
+{
+	x <- subset(mat,mat[,1]==textToLimitBy,1:ncol(mat))
+	return(x)
+}
+
+
+#END FUNCTIONS
+
+data <- read.csv("resources\\house-votes-84.csv") #Read file dataset
 
 DemoRepubMatrix=matrix(data$republican, byrow=T)
 dimnames(DemoRepubMatrix) <- list(NULL,"Party")
-
 
 mati=DemoRepubMatrix
 
@@ -28,6 +43,7 @@ for(i in 2:length(data))
 	mati <- cbind(mati, m) #append column to new matrix
 }
 
+
 #instanciate republican and democrate matrixs
 matiRepub <- as.matrix(mati[0,2:ncol(mati)])
 matiDemo <- as.matrix(mati[0,2:ncol(mati)])
@@ -37,28 +53,52 @@ for(p in 1:nrow(data))
 {
 	vmatrix = as.matrix(mati[p,2:ncol(mati)])
 	vmatrix = matrix(vmatrix,ncol = 16)
-	vmatrix
+	as.integer(vmatrix)
 	if(mati[p]=="republican")
 	{	
-		matiRepub <- rbind(matiRepub,vmatrix)	
+		matiRepub <- rbind(matiRepub,as.integer(vmatrix))	
 	}
 	if(mati[p]=="democrat")
 	{
-		matiDemo <- rbind(matiDemo,vmatrix)
+		matiDemo <- rbind(matiDemo,as.integer(vmatrix))
 	}
 }
 
 
-
-matiRepub
+#matiRepub
 nrow(matiRepub) #167
 
-matiDemo
+#matiDemo
 nrow(matiDemo) #267 
+
+#matiDemo
+
 
 #More Democrates Votes either yes or no across 16 bills than republicans by 100 (Removed any data associated with NAs : ?)
 
-calculateDistanceReturnMatrix <- function(pMatrix)
+matiDemoContig <- createContingencyTableFromMatrix(matiDemo)
+matiRepubContig <- createContingencyTableFromMatrix(matiRepub)
+matiDemoContig
+distancefinder(matiDemoContig)
+
+createContingencyTableFromMatrix <- function(pMatrix)
 {
-	
+	colnames(mxp) <- colnames(pMatrix)
+	yesBinary <- colSums(pMatrix<1)
+	noBinary <- colSums(pMatrix==1)
+	mxp <- rbind(mxp,as.integer(yesBinary))
+	mxp <- rbind(mxp,as.integer(noBinary))
+	mxp <- mxp[2:3,]
+	return(mxp)
+}
+
+distancefinder <- function(p)
+{
+	colnames(mxp) <- colnames(p)
+	rownames(mxp) <- "Difference"
+	for(i in 1:ncol(p))
+	{
+		mxp[1,i] = abs(diff(p[,i]))
+	}
+	return(mxp)
 }
