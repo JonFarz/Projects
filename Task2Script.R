@@ -24,6 +24,29 @@ subsetDataToMatrix <- function(mat, textToLimitBy)
 }
 
 
+createContingencyTableFromMatrix <- function(pMatrix)
+{
+	colnames(mxp) <- colnames(pMatrix)
+	yesBinary <- colSums(pMatrix<1)
+	noBinary <- colSums(pMatrix==1)
+	mxp <- rbind(mxp,as.integer(yesBinary))
+	mxp <- rbind(mxp,as.integer(noBinary))
+	mxp <- mxp[2:3,]
+	rownames(mxp) <- list("yes","no")
+	return(mxp)
+}
+
+distancefinder <- function(p)
+{
+	colnames(mxp) <- colnames(p)
+	rownames(mxp) <- "Difference"
+	for(i in 1:ncol(p))
+	{
+		mxp[1,i] = abs(diff(p[,i]))
+	}
+	return(mxp)
+}
+
 #END FUNCTIONS
 
 data <- read.csv("resources\\house-votes-84.csv") #Read file dataset
@@ -78,27 +101,8 @@ nrow(matiDemo) #267
 
 matiDemoContig <- createContingencyTableFromMatrix(matiDemo)
 matiRepubContig <- createContingencyTableFromMatrix(matiRepub)
+
 matiDemoContig
 distancefinder(matiDemoContig)
-
-createContingencyTableFromMatrix <- function(pMatrix)
-{
-	colnames(mxp) <- colnames(pMatrix)
-	yesBinary <- colSums(pMatrix<1)
-	noBinary <- colSums(pMatrix==1)
-	mxp <- rbind(mxp,as.integer(yesBinary))
-	mxp <- rbind(mxp,as.integer(noBinary))
-	mxp <- mxp[2:3,]
-	return(mxp)
-}
-
-distancefinder <- function(p)
-{
-	colnames(mxp) <- colnames(p)
-	rownames(mxp) <- "Difference"
-	for(i in 1:ncol(p))
-	{
-		mxp[1,i] = abs(diff(p[,i]))
-	}
-	return(mxp)
-}
+matiRepubContig
+distancefinder(matiRepubContig)
