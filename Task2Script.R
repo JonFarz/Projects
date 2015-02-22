@@ -26,24 +26,28 @@ subsetDataToMatrix <- function(mat, textToLimitBy)
 
 createContingencyTableFromMatrix <- function(pMatrix)
 {
-	colnames(mxp) <- colnames(pMatrix)
+	mxp <- colnames(pMatrix)
 	yesBinary <- colSums(pMatrix<1)
 	noBinary <- colSums(pMatrix==1)
 	mxp <- rbind(mxp,as.integer(yesBinary))
 	mxp <- rbind(mxp,as.integer(noBinary))
 	mxp <- mxp[2:3,]
-	rownames(mxp) <- list("yes","no")
+	rownames(mxp) <- c('yes','no')
+	colnames(mxp) <- colnames(pMatrix)
 	return(mxp)
 }
 
 distancefinder <- function(p)
 {
+	mxp <- matrix(colnames(p), nrow=1, ncol=16)
 	colnames(mxp) <- colnames(p)
-	rownames(mxp) <- "Difference"
+	#mxp <- as.matrix(mxp, ncol=16, nrow=0)
+	#print(mxp)
 	for(i in 1:ncol(p))
 	{
-		mxp[1,i] = abs(diff(p[,i]))
+		mxp[1,i] = abs(diff(as.numeric(p[,i])))
 	}
+	rownames(mxp) <- "Difference"
 	return(mxp)
 }
 
